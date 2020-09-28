@@ -31,6 +31,7 @@ def load_totals_data():
                 if len(triplet_values) > 1:
                     year = int(triplet_values[0])
                     match_count = int(triplet_values[1])
+                    #print(year, year - MIN_YEAR, len(data))
                     data[year - MIN_YEAR] = data[year - MIN_YEAR] + match_count
                     if year > max_year:
                         max_year = year
@@ -45,7 +46,7 @@ def filter_data(keyword, start, end, split_line):
 
 def load_data(keyword, start, end):
     max_year = MIN_YEAR
-    data = [0] * (end - start)
+    data = [0] * (end - start+1)
     keyword = keyword.lower()
     with open(get_ngram_dataset_file(keyword)) as infile:
         for line in infile:
@@ -83,7 +84,7 @@ def plot_graph(keyword, start, end, frequencies):
     plt.xlabel('Year')
     plt.ylabel('Frequency(%)')
     plt.title('Keyword: ' + keyword.capitalize())
-    plt.plot(list(range(start, end)), frequencies)  # Plot X=Year , Y=Frequency(%)
+    plt.plot(list(range(start, end+1)), frequencies)  # Plot X=Year , Y=Frequency(%)
     plt.savefig(keyword + '.' + str(start) + '-' + str(end) + '.png')
     plt.show()
 
