@@ -1,11 +1,41 @@
 #!/bin/bash
-/home/agenc/venv/bin/python /home/agenc/git/data.mining.term/google_ngram_analyzer.py --startyear 1800 --endyear 2008 --lang eng --keyword Politics
-/home/agenc/venv/bin/python /home/agenc/git/data.mining.term/google_ngram_analyzer.py --startyear 1800 --endyear 2008 --lang eng --keyword Science
-/home/agenc/venv/bin/python /home/agenc/git/data.mining.term/google_ngram_analyzer.py --startyear 1800 --endyear 2008 --lang eng --keyword Mass Media
-/home/agenc/venv/bin/python /home/agenc/git/data.mining.term/google_ngram_analyzer.py --startyear 1800 --endyear 2008 --lang eng --keyword Religion
-/home/agenc/venv/bin/python /home/agenc/git/data.mining.term/google_ngram_analyzer.py --startyear 1800 --endyear 2008 --lang eng --keyword Economy
-/home/agenc/venv/bin/python /home/agenc/git/data.mining.term/google_ngram_analyzer.py --startyear 1800 --endyear 2008 --lang eng --keyword Law
-/home/agenc/venv/bin/python /home/agenc/git/data.mining.term/google_ngram_analyzer.py --startyear 1800 --endyear 2008 --lang eng --keyword Education
-/home/agenc/venv/bin/python /home/agenc/git/data.mining.term/google_ngram_analyzer.py --startyear 1800 --endyear 2008 --lang eng --keyword Health
-/home/agenc/venv/bin/python /home/agenc/git/data.mining.term/google_ngram_analyzer.py --startyear 1800 --endyear 2008 --lang eng --keyword Art
-/home/agenc/venv/bin/python /home/agenc/git/data.mining.term/google_ngram_analyzer.py --startyear 1800 --endyear 2008 --lang eng --keyword Sports
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-totalcounts-20120701.txt --output googlebooks-eng-all-totalcounts-20120701.txt
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-a.gz --output googlebooks-eng-all-1gram-20120701-a.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-b.gz --output googlebooks-eng-all-1gram-20120701-b.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-c.gz --output googlebooks-eng-all-1gram-20120701-c.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-d.gz --output googlebooks-eng-all-1gram-20120701-d.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-e.gz --output googlebooks-eng-all-1gram-20120701-e.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-f.gz --output googlebooks-eng-all-1gram-20120701-f.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-g.gz --output googlebooks-eng-all-1gram-20120701-g.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-h.gz --output googlebooks-eng-all-1gram-20120701-h.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-i.gz --output googlebooks-eng-all-1gram-20120701-i.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-j.gz --output googlebooks-eng-all-1gram-20120701-j.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-k.gz --output googlebooks-eng-all-1gram-20120701-k.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-l.gz --output googlebooks-eng-all-1gram-20120701-l.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-m.gz --output googlebooks-eng-all-1gram-20120701-m.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-n.gz --output googlebooks-eng-all-1gram-20120701-n.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-o.gz --output googlebooks-eng-all-1gram-20120701-o.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-p.gz --output googlebooks-eng-all-1gram-20120701-p.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-q.gz --output googlebooks-eng-all-1gram-20120701-q.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-r.gz --output googlebooks-eng-all-1gram-20120701-r.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-s.gz --output googlebooks-eng-all-1gram-20120701-s.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-t.gz --output googlebooks-eng-all-1gram-20120701-t.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-u.gz --output googlebooks-eng-all-1gram-20120701-u.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-v.gz --output googlebooks-eng-all-1gram-20120701-v.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-w.gz --output googlebooks-eng-all-1gram-20120701-w.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-x.gz --output googlebooks-eng-all-1gram-20120701-x.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-y.gz --output googlebooks-eng-all-1gram-20120701-y.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-z.gz --output googlebooks-eng-all-1gram-20120701-z.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-0.gz --output googlebooks-eng-all-1gram-20120701-0.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-1.gz --output googlebooks-eng-all-1gram-20120701-1.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-2.gz --output googlebooks-eng-all-1gram-20120701-2.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-3.gz --output googlebooks-eng-all-1gram-20120701-3.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-4.gz --output googlebooks-eng-all-1gram-20120701-4.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-5.gz --output googlebooks-eng-all-1gram-20120701-5.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-6.gz --output googlebooks-eng-all-1gram-20120701-6.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-7.gz --output googlebooks-eng-all-1gram-20120701-7.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-8.gz --output googlebooks-eng-all-1gram-20120701-8.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-9.gz --output googlebooks-eng-all-1gram-20120701-9.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-other.gz --output googlebooks-eng-all-1gram-20120701-other.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-pos.gz --output googlebooks-eng-all-1gram-20120701-pos.gz
+curl http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-punctuation.gz --output googlebooks-eng-all-1gram-20120701-punctuation.gz
