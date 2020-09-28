@@ -20,7 +20,7 @@ def get_ngram_dataset_totals_file():
 
 def load_totals_data():
     data = []
-    for i in list(range(1500, 2012)):
+    for i in list(range(MIN_YEAR, MAX_YEAR)):
         data.append(0)
     with open(get_ngram_dataset_totals_file()) as infile:
         for line in infile:
@@ -30,7 +30,7 @@ def load_totals_data():
                 if len(triplet_values) > 1:
                     year = int(triplet_values[0])
                     match_count = int(triplet_values[1])
-                    data[year - 1500] = data[year - 1500] + match_count
+                    data[year - MIN_YEAR] = data[year - MIN_YEAR] + match_count
     return data
 
 
@@ -56,13 +56,15 @@ def compute_frequencies(totals, data, start):
     frequencies = []
     for i in range(len(data)):
         year = i + start
-        total_count = totals[year - 1500]
+        total_count = totals[year - MIN_YEAR]
         if total_count > 0:
             frequency = data[i] / total_count
             frequencies.append(frequency)
         else:
             frequencies.append(0)
-            print("Total count for year: " + str(year) + " is " + str(total_count))
+            if data[i] != 0:
+                print("Total count for year: " + str(year) + " is total count="
+                      + str(total_count) + " count=" + str(data[i]))
     return frequencies
 
 
@@ -87,7 +89,10 @@ def ngram_viewer(keyword, start, end, totals):
 def parse_config(args):
     from argparse import ArgumentParser
     parser = ArgumentParser(
-        description='Extract top frequency words from Google Ngram data')
+        description='Extract word frequency from Google Ngram dataset')
+    parser.add_argument(
+        '--keyword', dest='keyword', required=True,
+        help='search keyword')
     parser.add_argument(
         '--startyear', dest='startyear', type=int, default=MIN_YEAR,
         help='only include words after specified year (default %d)' % MIN_YEAR)
@@ -113,5 +118,5 @@ if __name__ == '__main__':
     start_time = time.time()
     config = parse_config(sys.argv[1:])
     totals = load_totals_data()
-    ngram_viewer("analysis", 1500, 2012, totals)
+    ngram_viewer(config.keyword, config.startyear, config.endyear, totals)
     print("--- %s seconds ---" % (time.time() - start_time))
