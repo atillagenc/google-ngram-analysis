@@ -1,3 +1,4 @@
-*.mining.term.iml
+*.iml
 .idea
 *.png
+data/*
