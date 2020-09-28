@@ -19,7 +19,7 @@ def get_ngram_dataset_totals_file():
 
 
 def load_totals_data():
-    data = []
+    data = [0]
     for i in list(range(MIN_YEAR, MAX_YEAR)):
         data.append(0)
     max_year = MIN_YEAR
@@ -57,7 +57,7 @@ def load_data(keyword, start, end):
                 data[year - start] = data[year - start] + int(split_line[2])
                 if year > max_year:
                     max_year = year
-    print("Max year in data for keyword="+keyword+":" + str(max_year))
+    print("Max year in data: keyword="+keyword+" max year=" + str(max_year))
     return data
 
 
