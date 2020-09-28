@@ -67,7 +67,7 @@ def compute_frequencies(totals, data, start):
         year = i + start
         total_count = totals[year - MIN_YEAR]
         if total_count > 0:
-            frequency = float(data[i]) / float(total_count)
+            frequency = float(data[i]*100) / float(total_count)
             if frequency > 1:
                 print("Frequency=" + str(frequency) + " count=" + str(data[i]) + " total count=" + str(total_count))
             frequencies.append(frequency)
@@ -91,9 +91,10 @@ def plot_graph(keyword, start, end, frequencies):
 
 def ngram_viewer(keyword, start, end, totals):
     data = load_data(keyword, start, end)
-    # print(data)
     frequencies = compute_frequencies(totals, data, start)
-    # print(frequencies)
+    #print(data)
+    #print(totals)
+    #print(frequencies)
     plot_graph(keyword, start, end, frequencies)
 
 
