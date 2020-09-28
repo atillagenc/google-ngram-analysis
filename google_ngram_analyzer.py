@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 VALID_LANGUAGES = ['eng']
 MIN_YEAR = 1500
 MAX_YEAR = 2020
-goggle_ngram_viewer_dataset_folder = '/home/agenc/data/term/downloads/google_ngrams/1/'
+goggle_ngram_viewer_dataset_folder = 'data/google_ngrams/1/'
 
 
 def get_ngram_dataset_file(keyword):
