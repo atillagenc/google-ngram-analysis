@@ -1,7 +1,8 @@
 #
-import time
-import matplotlib.pyplot as plt
 import sys
+import time
+
+import matplotlib.pyplot as plt
 
 VALID_LANGUAGES = ['eng']
 MIN_YEAR = 1500
