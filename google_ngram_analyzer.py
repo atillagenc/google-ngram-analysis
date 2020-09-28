@@ -6,21 +6,42 @@ import sys
 VALID_LANGUAGES = ['eng']
 MIN_YEAR = 1500
 MAX_YEAR = 2012
+goggle_ngram_viewer_dataset_folder = '/home/agenc/data/term/downloads/google_ngrams/1/'
 
 
-def get_ngram_dataset(keyword):
-    return '/home/agenc/data/term/downloads/google_ngrams/1/googlebooks-eng-all-1gram-20120701-' + keyword.lower()[0];
+def get_ngram_dataset_file(keyword):
+    return goggle_ngram_viewer_dataset_folder + 'googlebooks-eng-all-1gram-20120701-' + keyword.lower()[0]
+
+
+def get_ngram_dataset_totals_file():
+    return goggle_ngram_viewer_dataset_folder + 'googlebooks-eng-all-totalcounts-20120701.txt'
+
+
+def load_totals_data():
+    data = []
+    for i in list(range(1500, 2012)):
+        data.append(0)
+    with open(get_ngram_dataset_totals_file()) as infile:
+        for line in infile:
+            split_line = line.split("\t")
+            for valueString in split_line:
+                triplet_values = valueString.split(',')
+                if len(triplet_values) > 1:
+                    year = int(triplet_values[0])
+                    match_count = int(triplet_values[1])
+                    data[year - 1500] = data[year - 1500] + match_count
+    return data
 
 
 def filter_data(keyword, start, end, split_line):
     year = int(split_line[1])
-    return keyword == split_line[0].upper() and start <= year <= end
+    return keyword == split_line[0].lower() and start <= year <= end
 
 
 def load_data(keyword, start, end):
     data = [0] * (end - start)
-    keyword = keyword.upper()
-    with open(get_ngram_dataset(keyword)) as infile:
+    keyword = keyword.lower()
+    with open(get_ngram_dataset_file(keyword)) as infile:
         for line in infile:
             split_line = line.split("\t")
             if filter_data(keyword, start, end, split_line):
@@ -30,18 +51,34 @@ def load_data(keyword, start, end):
     return data
 
 
+def compute_frequencies(totals, data, start):
+    frequencies = []
+    for i in range(len(data)):
+        year = i + start
+        total_count = totals[year - 1500]
+        if total_count > 0:
+            frequency = data[i] / total_count
+            frequencies.append(frequency)
+        else:
+            frequencies.append(0)
+            print("Total count for year: " + str(year) + " is " + str(total_count))
+    return frequencies
+
+
 def plot_graph(keyword, start, end, frequencies):
     plt.axis([start, end, min(frequencies), max(frequencies)])
     plt.xlabel('Year')
     plt.ylabel('Frequency(%)')
+    plt.title('Keyword: ' + keyword.capitalize())
+    plt.plot(list(range(start, end)), frequencies)  # Plot X=Year , Y=Frequency(%)
     plt.savefig(keyword + '.' + str(start) + '-' + str(end) + '.png')
-    fig = plt.plot(list(range(start, end)), frequencies)  # Plot X=Year , Y=Frequency(%)
-    # plt.close(fig)
     plt.show()
 
 
-def ngram_viewer(keyword, start, end):
-    frequencies = load_data(keyword, start, end)
+def ngram_viewer(keyword, start, end, totals):
+    data = load_data(keyword, start, end)
+    print(data)
+    frequencies = compute_frequencies(totals, data, start)
     print(frequencies)
     plot_graph(keyword, start, end, frequencies)
 
@@ -74,5 +111,6 @@ def parse_config(args):
 if __name__ == '__main__':
     start_time = time.time()
     config = parse_config(sys.argv[1:])
-    ngram_viewer("analysis", config.startyear, config.endyear)
+    totals = load_totals_data()
+    ngram_viewer("analysis", 1500, 2012, totals)
     print("--- %s seconds ---" % (time.time() - start_time))
