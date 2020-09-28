@@ -1,4 +1,5 @@
 *.iml
 .idea
 *.png
-data/*
+data
+google_ngram_dataset

@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 VALID_LANGUAGES = ['eng']
 MIN_YEAR = 1500
 MAX_YEAR = 2020
-goggle_ngram_viewer_dataset_folder = 'data/google_ngrams/1/'
+goggle_ngram_viewer_dataset_folder = 'google_ngram_dataset/1/'
 
 
 def get_ngram_dataset_file(keyword):
@@ -86,7 +86,7 @@ def plot_graph(keyword, start, end, frequencies):
     plt.title('Keyword: ' + keyword.capitalize())
     plt.plot(list(range(start, end+1)), frequencies)  # Plot X=Year , Y=Frequency(%)
     plt.savefig(keyword + '.' + str(start) + '-' + str(end) + '.png')
-    plt.show()
+    #plt.show()
 
 
 def ngram_viewer(keyword, start, end, totals):
